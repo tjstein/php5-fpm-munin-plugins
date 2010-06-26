@@ -50,6 +50,8 @@ graph_total Total
 graph_info Plugin created by TJ Stein
 idle.label Idle
 idle.draw AREA
+used.label Idle
+used.draw AREA
 total.label Free
 total.draw STACK
 ');
@@ -73,9 +75,9 @@ foreach my $port (@PORTS)
         print "used.value U\n";
     }
     if ($response->content =~ /total processes:\s+([0-9\.]+)/im) {
-            print "total.value $1\n";
+        print "total.value $1\n";
     } else {
-            print "total.value U\n";
+        print "total.value U\n";
     }
 }
 

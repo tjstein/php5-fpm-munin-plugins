@@ -52,8 +52,8 @@ accepted.label Accepted
 accepted.draw AREA
 idle.label Idle
 idle.draw AREA
-used.label Used
-used.draw AREA
+active.label Used
+active.draw AREA
 total.label Total
 total.draw STACK
 ');
@@ -77,9 +77,9 @@ foreach my $port (@PORTS)
         print "idle.value U\n";
     }
 	if ($response->content =~ /active processes:\s+([0-9\.]+)/im) {
-        print "used.value $1\n";
+        print "active.value $1\n";
     } else {
-        print "used.value U\n";
+        print "active.value U\n";
     }
     if ($response->content =~ /total processes:\s+([0-9\.]+)/im) {
         print "total.value $1\n";

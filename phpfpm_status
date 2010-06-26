@@ -48,10 +48,10 @@ graph_category PHP
 graph_order used Processes
 graph_total Total
 graph_info Plugin created by TJ Stein
-used.label Used
-used.draw AREA
-free.label Free
-free.draw STACK
+idle.label Idle
+idle.draw AREA
+total.label Free
+total.draw STACK
 ');
 
 	exit 0;
@@ -63,9 +63,9 @@ foreach my $port (@PORTS)
     my $url = sprintf $URL, $port;
     my $response = $ua->request(HTTP::Request->new('GET',$url));
     if ($response->content =~ /idle processes:\s+([0-9\.]+)/im) {
-        print "used.value $1\n";
+        print "idle.value $1\n";
     } else {
-        print "used.value U\n";
+        print "idle.value U\n";
     }
 	if ($response->content =~ /active processes:\s+([0-9\.]+)/im) {
         print "used.value $1\n";
@@ -73,9 +73,9 @@ foreach my $port (@PORTS)
         print "used.value U\n";
     }
     if ($response->content =~ /total processes:\s+([0-9\.]+)/im) {
-            print "free.value $1\n";
+            print "total.value $1\n";
     } else {
-            print "free.value U\n";
+            print "total.value U\n";
     }
 }
 

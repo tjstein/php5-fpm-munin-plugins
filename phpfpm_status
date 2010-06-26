@@ -48,6 +48,8 @@ graph_category PHP
 graph_order used Processes
 graph_total Total
 graph_info Plugin created by TJ Stein
+accepted.label Idle
+accepted.draw AREA
 idle.label Idle
 idle.draw AREA
 used.label Idle
@@ -64,7 +66,12 @@ foreach my $port (@PORTS)
     my $ua = LWP::UserAgent->new(timeout => 30);
     my $url = sprintf $URL, $port;
     my $response = $ua->request(HTTP::Request->new('GET',$url));
-    if ($response->content =~ /idle processes:\s+([0-9\.]+)/im) {
+   	if ($response->content =~ /accepted conn:\s+([0-9\.]+)/im) {
+        print "accepted.value $1\n";
+    } else {
+        print "accepted.value U\n";
+    }
+	if ($response->content =~ /idle processes:\s+([0-9\.]+)/im) {
         print "idle.value $1\n";
     } else {
         print "idle.value U\n";

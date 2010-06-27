@@ -73,7 +73,7 @@ foreach my $port (@PORTS)
     } else {
         print "active.value U\n";
     }
-    if ($response->content =~ /total processes:\s+([0-9\.]+)/im) {
+	if ($response->content =~ /total processes:\s+([0-9\.]+)/im) {
         print "total.value $1\n";
     } else {
         print "total.value U\n";

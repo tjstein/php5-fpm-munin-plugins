@@ -32,6 +32,7 @@ idle processes:   6
 active processes: 0
 total processes:  6
 
-Note: The phpfpm_status plugin is particularly useful if you're using dynamic process management. You can choose static or dynamic in the php5-fpm.conf.
+h3. Note: 
+The phpfpm_status plugin is particularly useful if you're using dynamic process management. You can choose static or dynamic in the php5-fpm.conf.
 
 Requirements: libwww-perl

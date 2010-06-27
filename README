@@ -12,4 +12,13 @@ location ~ ^/(status|ping)$ {
     deny all;
 }
 
+You'll need to make sure that from within your box, you can curl /status with # curl http://localhost/status. You should get a response similar to this:
+
+accepted conn:    121
+pool:             www
+process manager:  dynamic
+idle processes:   6
+active processes: 0
+total processes:  6
+
 Note: The phpfpm_status plugin is particularly useful if you're using dynamic process management. You can choose static or dynamic in the php5-fpm.conf.

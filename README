@@ -1,8 +1,15 @@
-If you're using Nginx, you can set up the status location directive like this:
+For the phpfpm_status plugin, you'll need to enable the status feature included in newer version of PHP-FPM. Jérôme 
+Loyet from the Nginx forums provided some useful insight on how to get this working with Nginx. You'll essentially set 
+up the status location directive like this:
 
 location ~ ^/(status|ping)$ {
     include fastcgi_params;
-    fastcgi_pass 127.0.0.1:9000;
-    fastcgi_param SCRIPT_FILENAME /var/www/example.com/public$fastcgi_script_name;
-    allow 127.0.0.1;
+    fastcgi_pass backend;
+    fastcgi_param SCRIPT_FILENAME $fastcgi_script_name;
+    allow 127.0.0.1:9000;
+    allow stats_collector.localdomain;
+    allow watchdog.localdomain;
+    deny all;
 }
+
+Note: The phpfpm_status plugin is particularly useful if you're using dynamic process management. You can choose static or dynamic in the php5-fpm.conf.

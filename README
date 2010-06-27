@@ -1,0 +1,8 @@
+If you're using Nginx, you can set up the status location directive like this:
+
+location ~ ^/(status|ping)$ {
+    include fastcgi_params;
+    fastcgi_pass 127.0.0.1:9000;
+    fastcgi_param SCRIPT_FILENAME /var/www/example.com/public$fastcgi_script_name;
+    allow 127.0.0.1;
+}

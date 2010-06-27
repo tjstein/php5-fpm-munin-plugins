@@ -1,37 +1,22 @@
-#!/bin/sh
-# -*- sh -*-
+#!/usr/bin/env perl
 #
-# Plugin to monitor the memory consumption of PHP5-FPM on the machine.
+# Munin plugin for monitoring PHP5-FPM memory usage
 #
 # Copyright TJ Stein 2010 http://constantshift.com
-#
-# Parameters:
-#
-# config (required)
-# autoconf (optional - used by munin-config)
-#
-# Magick markers (optional - used by munin-config and som installation
-# scripts):
-#%# family=manual
-#%# capabilities=autoconf
 
-if [ "$1" = "autoconf" ]; then
-echo yes
-exit 0
-fi
+if ( exists $ARGV[0] and $ARGV[0] eq "config" ) {
+        print "graph_title PHP5-FPM Memory Usage\n";
+        print "graph_vlabel RAM\n";
+        print "graph_category PHP\n";
+        print "ram.label ram\n";
+                print "graph_args --base 1024\n";
+} else {
+        my $i = Integer;
+        @cmd = `ps auwx | grep php | grep -v grep | grep -v phpfpm_memory`;
 
-if [ "$1" = "config" ]; then
-echo 'graph_title PHP5-FPM Memory Usage'
-echo 'graph_args --base 1000 -l 0 '
-echo 'graph_vlabel MB of RAM'
-echo 'graph_category PHP'
-echo 'graph_info This graph shows the amount of memory consumed by PHP5-FPM'
-echo 'php_memory.label PHP5-FPM Memory Usage'
-echo 'php_memory.draw LINE2'
-echo 'php_memory.info The current memory consumption for PHP5-FPM'
-exit 0
-fi
-
-echo -n "php_memory.value "
-ps awwwux | grep php5-fpm | grep -v grep | awk '{mem = $6; tot = $6 + tot; total++} END{printf("%f\n", tot / 1024)}'
-
+        foreach (@cmd) {
+                @return = split(/ +/, $_);
+                $i += @return[5]*1024;
+        }
+        print "ram.value ".$i."\n";
+}

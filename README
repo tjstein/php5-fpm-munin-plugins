@@ -1,5 +1,6 @@
-To install on Ubuntu 10.04:
+h2. To install on Ubuntu 10.04:
 
+<pre><code>
 cd /usr/share/munin/plugins
 git clone git://github.com/bummercloud/PHP5-FPM-Munin-Plugins.git
 chmod +x PHP5-FPM-Munin-Plugins/phpfpm_*
@@ -8,11 +9,13 @@ ln -s /usr/share/munin/plugins/PHP5-FPM-Munin-Plugins/phpfpm_memory /etc/munin/p
 ln -s /usr/share/munin/plugins/PHP5-FPM-Munin-Plugins/phpfpm_status /etc/munin/plugins/phpfpm_status
 ln -s /usr/share/munin/plugins/PHP5-FPM-Munin-Plugins/phpfpm_processes /etc/munin/plugins/phpfpm_processes
 service munin-node restart
+</code></pre>
 
 For the phpfpm_status plugin, you'll need to enable the status feature included in newer version of PHP-FPM. Jérôme 
 Loyet from the Nginx forums provided some useful insight on how to get this working with Nginx. You'll essentially set 
 up the status location directive like this:
 
+<pre><code>
 location ~ ^/(status|ping)$ {
     include fastcgi_params;
     fastcgi_pass backend;
@@ -22,6 +25,7 @@ location ~ ^/(status|ping)$ {
     allow watchdog.localdomain;
     deny all;
 }
+</code></pre>
 
 You'll need to make sure that from within your box, you can curl /status with # curl http://localhost/status. You should get a response similar to this:
 

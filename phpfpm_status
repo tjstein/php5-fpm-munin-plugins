@@ -46,7 +46,6 @@ graph_args --base 1024 -l 0
 graph_vlabel Status
 graph_category PHP
 graph_order Accepted Idle Active Total
-graph_total Total
 graph_info Plugin created by TJ Stein
 accepted.label Accepted
 accepted.draw AREA

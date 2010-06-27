@@ -23,10 +23,10 @@ fi
 if [ "$1" = "config" ]; then
 echo 'graph_title PHP5-FPM Memory Usage'
 echo 'graph_args --base 1000 -l 0 '
-echo 'graph_vlabel PHP5-FPM Memory Usage'
+echo 'graph_vlabel MB of RAM'
 echo 'graph_category PHP'
 echo 'graph_info This graph shows the amount of memory consumed by PHP5-FPM'
-echo 'php_memory.label PHP5-FPM Memory Consumption'
+echo 'php_memory.label PHP5-FPM Memory Usage'
 echo 'php_memory.draw LINE2'
 echo 'php_memory.info The current memory consumption for PHP5-FPM'
 exit 0

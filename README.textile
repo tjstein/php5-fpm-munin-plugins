@@ -9,7 +9,7 @@ ln -s /usr/share/munin/plugins/PHP5-FPM-Munin-Plugins/phpfpm_status /etc/munin/p
 ln -s /usr/share/munin/plugins/PHP5-FPM-Munin-Plugins/phpfpm_processes /etc/munin/plugins/phpfpm_processes
 service munin-node restart</code></pre>
 
-For the phpfpm_status plugin, you'll need to enable the status feature included in newer version of PHP-FPM. Open up the php5-fpm.conf, /etc/php5/fpm, and uncomment line 186 for the pm.status_path directive:
+For the phpfpm_status plugin, you'll need to enable the status feature included in newer versions (5.3.2+) of PHP-FPM. Open up the php5-fpm.conf, /etc/php5/fpm, and uncomment line 186 for the pm.status_path directive:
 
 <pre><code>pm.status_path = /status</code></pre> 
 

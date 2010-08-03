@@ -33,4 +33,4 @@ exit 0
 fi
 
 echo -n "php_processes.value "
-ps awwwux | grep php5-fpm | grep -v grep | wc -l
+pgrep -c php5-fpm

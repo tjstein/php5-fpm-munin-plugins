@@ -9,9 +9,9 @@ ln -s /usr/share/munin/plugins/PHP5-FPM-Munin-Plugins/phpfpm_status /etc/munin/p
 ln -s /usr/share/munin/plugins/PHP5-FPM-Munin-Plugins/phpfpm_processes /etc/munin/plugins/phpfpm_processes
 service munin-node restart</code></pre>
 
-For the phpfpm_status plugin, you'll need to enable the status feature included in newer versions (5.3.2+) of PHP-FPM. Open up the php5-fpm.conf, /etc/php5/fpm, and uncomment line 186 for the pm.status_path directive:
+For the phpfpm_status and phpfpm_connections plugins, you'll need to enable the status feature included in newer versions (5.3.2+) of PHP-FPM. Open up the php5-fpm.conf, /etc/php5/fpm, and uncomment line 186 for the pm.status_path directive:
 
-<pre><code>pm.status_path = /status</code></pre> 
+<pre><code>pm.status_path = /status</code></pre>
 
 Jérôme Loyet from the Nginx forums provided some useful insight on how to get this working with Nginx. You'll essentially set 
 up the status location directive like this:
@@ -28,7 +28,7 @@ up the status location directive like this:
 
 You'll need to make sure that from within your box, you can curl /status with # curl http://localhost/status. You should get a response similar to this:
 
-accepted conn:    121
+accepted conn:    40163
 pool:             www
 process manager:  dynamic
 idle processes:   6

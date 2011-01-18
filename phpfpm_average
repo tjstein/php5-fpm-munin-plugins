@@ -15,6 +15,8 @@
 #%# family=manual
 #%# capabilities=autoconf
 
+PHP_BIN=${phpbin-"php5-fpm"}
+
 if [ "$1" = "autoconf" ]; then
 echo yes
 exit 0
@@ -33,5 +35,5 @@ exit 0
 fi
 
 echo -n "php_average.value "
-ps awwwux | grep php5-fpm | grep -v grep | awk '{mem = $6; tot = $6 + tot; total++} END{printf("%d\n", mem / total, tot / 1024)}'
+ps awwwux | grep $PHP_BIN | grep -v grep | awk '{mem = $6; tot = $6 + tot; total++} END{printf("%d\n", mem / total, tot / 1024)}'
 

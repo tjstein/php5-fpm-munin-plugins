@@ -49,6 +49,8 @@ graph_order Connections
 graph_info Plugin created by TJ Stein
 accepted.label Idle
 accepted.draw AREA
+accepted.type DERIVE
+accepted.min 0
 ');
 
 	exit 0;

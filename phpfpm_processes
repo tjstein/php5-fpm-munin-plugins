@@ -35,4 +35,4 @@ exit 0
 fi
 
 echo -n "php_processes.value "
-pgrep $PHP_BIN | wc -l
+ps awwwux | grep $PHP_BIN | grep -v grep | wc -l

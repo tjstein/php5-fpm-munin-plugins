@@ -45,14 +45,14 @@ if ( defined $ARGV[0] and $ARGV[0] eq "config" )
 graph_args --base 1024 -l 0
 graph_vlabel Connections
 graph_category PHP
-graph_order idle active total
+graph_order active idle total
 graph_info Plugin created by TJ Stein
-idle.label Idle
-idle.draw AREA
 active.label Active
 active.draw AREA
+idle.label Idle
+idle.draw STACK
 total.label Total
-total.draw STACK
+total.draw LINE1
 ');
 
 	exit 0;

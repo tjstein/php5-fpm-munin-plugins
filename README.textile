@@ -1,4 +1,4 @@
-h2. To install on Ubuntu 10.04:
+h3. To install on Ubuntu 10.04:
 
 <pre><code>cd /usr/share/munin/plugins
 git clone git://github.com/tjstein/php5-fpm-munin-plugins.git

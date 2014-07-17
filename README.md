@@ -33,14 +33,14 @@ location ~ ^/(status|ping)$ {
 
 You'll need to make sure that from within your box, you can curl /status with # curl http://localhost/status. You should get a response similar to this:
 
-´´´
+```
 accepted conn:    40163
 pool:             www
 process manager:  dynamic
 idle processes:   6
 active processes: 0
 total processes:  6
-´´´
+```
 
 #### Note: 
 

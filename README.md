@@ -51,6 +51,7 @@ The phpfpm_status plugin is particularly useful if you're using dynamic or on-de
 * env.url: Set a custom url, defaults to _http://127.0.0.1/status_
 * env.ports: Set a custom port, defaults to _80_
 * env.phpbin: Set a custom php binary name, defaults to _php5-fpm_
+* env.phppool: Set a custom php pool, defaults to www
 
 #### Requirements:
 

@@ -36,5 +36,7 @@ exit 0
 fi
 
 echo -n "php_average.value "
-ps awwwux | grep "$PHP_BIN: pool $PHP_POOL" | grep -v grep | grep -v master | awk '{total_mem = $6 * 1024 + total_mem; total_proc++} END{printf("%d\n", total_mem / total_proc)}'
-
+tmpfile=/dev/shm/$$
+ps awwwux | grep "${PHP_BIN}: pool $PHP_POOL" | grep -v grep | grep -v master > $tmpfile
+test -s $tmpfile && awk '{total_mem = $6 * 1024 + total_mem; total_proc++} END{printf("%d\n", total_mem / total_proc)}' $tmpfile || echo N
+rm -f $tmpfile

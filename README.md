@@ -52,6 +52,8 @@ The phpfpm_status plugin is particularly useful if you're using dynamic or on-de
 * env.ports: Set a custom port, defaults to _80_
 * env.phpbin: Set a custom php binary name, defaults to _php5-fpm_
 * env.phppool: Set a custom php pool, defaults to www
+* env.warning: Set the warning alarm, triggered when % of active/total connections higher than the defined value. Defaults to 0.6 (60%).
+* env.critical: Set the critical alarm, triggered when % of active/total connections higher than the defined value. Defaults to 0.8 (80%).
 
 #### Requirements:
 

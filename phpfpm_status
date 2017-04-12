@@ -21,6 +21,11 @@ configuration to override the defaults. These are the defaults:
   [phpfpm_*]
     env.url http://127.0.0.1/status
     env.ports 80
+    env.warning 0.6
+    env.critical 0.8
+
+Critical and warning are optional settings and are by default
+triggered at 60% and 80% respectively of the total capacity.
 
 =head1 PARAMETERS:
 
@@ -115,6 +120,18 @@ foreach my $port (@PORTS)
     } else {
         print "total.value U\n";
     }
+
+	my $total = $1;
+	my $warning_threshold = exists $ENV{warning}  ? $ENV{warning} : '0.60';
+	my $critical_threshold = exists $ENV{critical}  ? $ENV{critical} : '0.80';
+
+	my $warning_level = int($total*$warning_threshold);
+	my $critical_level = int($total*$critical_threshold);
+
+	print ("active.warning $warning_level\n");
+	print ("active.critical $critical_level\n");
+
+
 }
 
 # vim:syntax=perl

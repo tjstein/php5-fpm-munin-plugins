@@ -1,6 +1,6 @@
 ### To install on Ubuntu:
 
-````
+```
 cd /usr/share/munin/plugins
 git clone git://github.com/tjstein/php5-fpm-munin-plugins.git
 chmod +x php5-fpm-munin-plugins/phpfpm_*

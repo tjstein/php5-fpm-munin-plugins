@@ -1,6 +1,6 @@
 ### To install on Ubuntu:
 
-````
+```
 cd /usr/share/munin/plugins
 git clone git://github.com/tjstein/php5-fpm-munin-plugins.git
 chmod +x php5-fpm-munin-plugins/phpfpm_*
@@ -31,7 +31,7 @@ location ~ ^/(status|ping)$ {
 }
 ```
 
-You'll need to make sure that from within your box, you can curl /status with # curl http://localhost/status. You should get a response similar to this:
+You'll need to make sure that from within your box, you can curl /status with `# curl http://localhost/status`. You should get a response similar to this:
 
 ```
 accepted conn:    40163
